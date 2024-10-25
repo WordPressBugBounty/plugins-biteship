@@ -4,7 +4,7 @@ Donate link: https://biteship.com/woocommerce
 Tags: supply chain, ongkir, cek ongkir, kurir, ongkos kirim, logistics, logistic, woocommerce
 Requires at least: 4.0
 Tested up to: 6.6.1
-Stable tag: 3.1.0
+Stable tag: 3.2.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -108,6 +108,8 @@ Sayang sekali saat ini plugin Biteship for WooCommerce hanya mendukung pengirima
 4. Dashboard Biteship
 
 == Changelog ==
+= 3.2.0 =
+* Update new tracking page url
 = 3.1.0 =
 * Update tracking page url
 = 3.0.9 =

@@ -33,7 +33,7 @@
 				</article>
 				<footer>
 					<div class="inner">
-                        <button onclick="redirectPageTracking('{{{ data.waybill_id }}}', '{{{ data.waybill_url }}}')" class="button button-primary button-large"><?php esc_html_e(
+                        <button onclick="redirectPageTracking('{{{ data.link }}}')" class="button button-primary button-large"><?php esc_html_e(
                             "Cek Order",
                             "woocommerce"
                         ); ?></button>
@@ -45,7 +45,7 @@
 	<div class="wc-backbone-modal-backdrop modal-close"></div>
 </script>
 <script>
-    function redirectPageTracking(waybill_id, waybill_url){
-        window.open( waybill_url+"&waybill_id="+waybill_id, '_blank');
+    function redirectPageTracking(link){
+        window.open( link, '_blank');
     }
 </script>

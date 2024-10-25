@@ -332,10 +332,11 @@
           biteshipActionTd.children().remove();
           if (data.courier && data.courier.waybill_id) {
             var waybillId = data.courier.waybill_id;
+            var link = data.courier.link
             var biteshipStatus = data.status;
             biteshipWaybillTd.append(`<mark class="order-status biteship-tips" data-tip="Biteship status: ${data.status}"><span>${waybillId}</span></mark>`);
             biteshipStatusTd.append(`<mark class="order-status"><span>${biteshipStatus}</span></mark>`);
-            biteshipStatusTd.append(createShipmentTrackingButton(waybillId));
+            biteshipStatusTd.append(createShipmentTrackingButton(link));
 
             var deleteButton = createDeleteShipmentButton(waybillId, orderId, biteshipStatus);
             biteshipActionTd.append(deleteButton);
@@ -478,9 +479,9 @@
     return createButton;
   }
 
-  function createShipmentTrackingButton(waybill_id) {
-    if (phpVars.trackingPageUrl.length > 0 && phpVars.trackingPageIsactive) {
-      var createButton = $(`<a class="button" target="_blank" rel="noopener noreferrer" href="${phpVars.trackingPageUrl}&waybill_id=${waybill_id}" style="margin-top: 10px;">Lacak</a>`);
+  function createShipmentTrackingButton(link) {
+    if (phpVars.trackingPageIsactive) {
+      var createButton = $(`<a class="button" target="_blank" rel="noopener noreferrer" href="${link}" style="margin-top: 10px;">Lacak</a>`);
       createButton.click(function (event) {
         var disabled = $(this).attr("disabled");
         if (disabled) {
@@ -580,6 +581,7 @@
             order_id: orderId,
             waybill_id: response.data.waybill_id,
             waybill_url: phpVars.trackingPageUrl,
+            link: response.data.link
           },
         });
       } else {

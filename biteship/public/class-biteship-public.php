@@ -329,6 +329,7 @@ class Biteship_Public
         $response = [];
         $order_id = (int) $_POST["orderId"];
         $waybill_id = "";
+        $link = "";
         if ($order_id > 0) {
             $order = wc_get_order($order_id);
             $selected_shipping = $this->get_selected_biteship_shipping_from_order($order);
@@ -336,12 +337,15 @@ class Biteship_Public
                 $biteship_order_id = $selected_shipping->get_meta("biteship_order_id");
                 if (strlen($biteship_order_id) > 0) {
                     $biteship_shipping = $this->get_biteship_shipping();
-                    $waybill_id = $biteship_shipping->rest_adapter->get_biteship_order($biteship_order_id)["courier"]["waybill_id"];
+                    $biteship_order = $biteship_shipping->rest_adapter->get_biteship_order($biteship_order_id);
+                    $waybill_id = $biteship_order["courier"]["waybill_id"];
+                    $link = $biteship_order["courier"]["link"];
                 }
             }
         }
         $response["order_id"] = $order_id;
         $response["waybill_id"] = $waybill_id;
+        $response["link"] = $link;
         wp_send_json_success($response);
     }
 
